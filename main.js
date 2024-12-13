@@ -9,10 +9,14 @@ function Gameboard() {
             board[i].push(Cell());
         }
     }
-    console.log(board);
 
+    console.log(board);
     const getBoard = () => board;
-}
+
+    const takeTurn = (square, player) => {
+        
+    }
+};
 
 function Cell() {
     let value = 0;
