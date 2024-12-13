@@ -10,4 +10,6 @@ function Cell() {
     const addToken = (player) => {
         value = player;
     }
+
+    const getValue = () => value;
 }
