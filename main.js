@@ -12,4 +12,9 @@ function Cell() {
     }
 
     const getValue = () => value;
-}
+
+    return {
+        addToken,
+        getValue
+    };
+};
