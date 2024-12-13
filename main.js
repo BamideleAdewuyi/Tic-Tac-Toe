@@ -5,5 +5,5 @@ function Gameboard() {
 }
 
 function Cell() {
-    
+    let value = 0;
 }
