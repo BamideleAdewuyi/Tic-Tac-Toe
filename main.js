@@ -9,8 +9,8 @@ function Gameboard() {
             board[i].push(Cell());
         }
     }
-
     console.log(board);
+
 }
 
 function Cell() {
@@ -27,3 +27,5 @@ function Cell() {
         getValue
     };
 };
+
+Gameboard()
