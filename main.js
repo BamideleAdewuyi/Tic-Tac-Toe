@@ -3,3 +3,7 @@ function Gameboard() {
     const columns =3;
     board = [];
 }
+
+function Cell() {
+    
+}
