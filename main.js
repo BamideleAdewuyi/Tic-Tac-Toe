@@ -11,6 +11,7 @@ function Gameboard() {
     }
     console.log(board);
 
+    const getBoard = () => board;
 }
 
 function Cell() {
