@@ -6,4 +6,8 @@ function Gameboard() {
 
 function Cell() {
     let value = 0;
+
+    const addToken = (player) => {
+        value = player;
+    }
 }
