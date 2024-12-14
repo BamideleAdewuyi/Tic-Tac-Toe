@@ -14,7 +14,7 @@ function Gameboard() {
     const getBoard = () => board;
 
     const takeTurn = (row, column, player) => {
-        
+        if (board[row][column].getValue != 0) return;
     }
 };
 
