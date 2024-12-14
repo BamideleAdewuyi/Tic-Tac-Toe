@@ -28,6 +28,17 @@ function Gameboard() {
         // Otherwise, the move is valid and square can have value changed to the player
         board[row][column].addToken(player);
     }
+
+    // This method will be used to print our board to the console.
+    // It is helpful to see what the board looks like after each turn as we play,
+    // but we won't need it after we build our UI
+    const printBoard = () => {
+        const boardWithCellValues = board.map((row) => row.map((cell) => cell.getValue()));
+        console.log(boardWithCellValues);
+    };
+
+    // Return these so it is possible to interact with the board
+    return {getBoard, takeTurn, printBoard};
 };
 
 // Each cell is a square on grid, their default value is 0, for untaken.
