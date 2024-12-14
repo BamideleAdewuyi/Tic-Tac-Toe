@@ -110,4 +110,4 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     }
 }
 
-Gameboard();
+const game = GameController();
