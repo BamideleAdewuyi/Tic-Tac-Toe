@@ -90,6 +90,10 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         console.log(`${getActivePlayer().name}'s turn.`);
     };
 
+    const gameOver = () => {
+        
+    }
+
     const playRound = (row, column) => {
         // Active player takes a turn
         board.takeTurn(row, column, getActivePlayer().token);
