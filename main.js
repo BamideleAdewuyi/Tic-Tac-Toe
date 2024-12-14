@@ -62,7 +62,7 @@ function Cell() {
 function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") {
     
     const board = Gameboard();
-
+    
     const players = [
         {
             name: playerOneName,
@@ -74,6 +74,10 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         }
     ];
 
+    // Default is player 1 goes first
+    let activePlayer = players[0];
+
+    
 }
 
 Gameboard();
