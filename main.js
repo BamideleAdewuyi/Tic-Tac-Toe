@@ -82,6 +82,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         // If active player is player 2, it will switch to player 1.
         activePlayer = activePlayer === players[0] ? players[1]:players[0];
     }
+
+    const getActivePlayer = () => activePlayer;
 }
 
 Gameboard();
