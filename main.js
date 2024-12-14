@@ -1,8 +1,12 @@
+// Set up Gameboard to represent state of the board
 function Gameboard() {
+    // 3 rows, 3 columns
     const rows = 3;
-    const columns =3;
+    const columns = 3;
     board = [];
-
+    // First loop puts an empty array for each row
+    // Second loop populates those arrays with 3 Cell functions
+    // Result is 3 groups of 3 Cell functions representing cells on a grid
     for (let i = 0; i < rows; i++) {
         board[i] = [];
         for (let j = 0; j < columns; j++) {
@@ -11,20 +15,27 @@ function Gameboard() {
     }
 
     console.log(board);
+
+    // This is how to render the board
     const getBoard = () => board;
 
+    // Check to see if a square is taken. If not, move is valid and value can be changed to player number
     const takeTurn = (row, column, player) => {
         if (board[row][column].getValue != 0) return;
     }
 };
 
+// Each cell is a square on grid, their default value is 0, for untaken.
+// Their value can be changed to either 1 or 2, depending on which player has taken the square.
 function Cell() {
     let value = 0;
 
+    // Accept a player's token to change the value of the cell
     const addToken = (player) => {
         value = player;
     }
 
+    // How we will retrieve the current value of this cell through closure
     const getValue = () => value;
 
     return {
