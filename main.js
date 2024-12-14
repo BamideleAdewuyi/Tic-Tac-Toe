@@ -89,6 +89,10 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         board.printBoard();
         console.log(`${getActivePlayer().name}'s turn.`);
     };
+
+    const playRound = (row, column) => {
+
+    }
 }
 
 Gameboard();
