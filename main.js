@@ -62,6 +62,7 @@ function Cell() {
 
 // GameController is used to control flow and state of game. Also checks for winner
 function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") {
+    const board = Gameboard();
     
 }
 
