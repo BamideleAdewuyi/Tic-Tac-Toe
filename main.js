@@ -21,7 +21,12 @@ function Gameboard() {
 
     // Check to see if a square is taken. If not, move is valid and value can be changed to player number
     const takeTurn = (row, column, player) => {
+
+        // If the selected square is does not have a value of 0, it is taken so the move is invalid
         if (board[row][column].getValue != 0) return;
+
+        // Otherwise, the move is valid and square can have value changed to the player
+        board[row][column].addToken(player);
     }
 };
 
