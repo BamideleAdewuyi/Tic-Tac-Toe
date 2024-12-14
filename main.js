@@ -14,8 +14,6 @@ function Gameboard() {
         }
     }
 
-    console.log(board);
-
     // This is how to render the board
     const getBoard = () => board;
 
@@ -62,8 +60,20 @@ function Cell() {
 
 // GameController is used to control flow and state of game. Also checks for winner
 function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") {
-    const board = Gameboard();
     
+    const board = Gameboard();
+
+    const players = [
+        {
+            name: playerOneName,
+            token: 1
+        },
+        {
+            name: playerTwoName,
+            token: 2
+        }
+    ];
+
 }
 
 Gameboard();
