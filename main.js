@@ -13,7 +13,7 @@ function Gameboard() {
     console.log(board);
     const getBoard = () => board;
 
-    const takeTurn = (square, player) => {
+    const takeTurn = (row, column, player) => {
         
     }
 };
