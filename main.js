@@ -77,7 +77,11 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     // Default is player 1 goes first
     let activePlayer = players[0];
 
-    
+    const switchPlayerTurn = () => {
+        // If active player is player 1, it will switch to player 2.
+        // If active player is player 2, it will switch to player 1.
+        activePlayer = activePlayer === players[0] ? players[1]:players[0];
+    }
 }
 
 Gameboard();
