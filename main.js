@@ -100,6 +100,14 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         switchPlayerTurn();
         printNewRound();
     }
+
+    // Initial play game message
+    printNewRound();
+
+    return {
+        playRound,
+        getActivePlayer
+    }
 }
 
 Gameboard();
