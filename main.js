@@ -107,7 +107,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     const playRound = (row, column) => {
         // Active player takes a turn
         board.takeTurn(row, column, getActivePlayer().token);
-
+        getActivePlayer().selections.push([row[column]])
         // Check for winner
 
         // Switch player turn
