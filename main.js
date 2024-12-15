@@ -14,21 +14,6 @@ function Gameboard() {
         }
     }
 
-    const gameOver = () => {
-        var winners = [
-        ["0[0]", "0[1]", "0[2]"], 
-        ["1[0]", "1[1]", "1[2]"], 
-        ["2[0]", "2[1]", "2[2]"],
-        ["0[0]", "1[0]", "2[0]"],
-        ["0[1]", "1[1]", "2[1]"],
-        ["0[2]", "1[2]", "2[2]"],
-        ["0[0]", "1[1]", "2[2]"],
-        ["0[2]", "1[1]", "2[0]"]
-    ]
-
-        return winners;
-    }
-
     // This is how to render the board
     const getBoard = () => board;
 
@@ -112,6 +97,21 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         board.printBoard();
         console.log(`${getActivePlayer().name}'s turn.`);
     };
+
+    const gameOver = () => {
+        var winners = [
+        ["0[0]", "0[1]", "0[2]"], 
+        ["1[0]", "1[1]", "1[2]"], 
+        ["2[0]", "2[1]", "2[2]"],
+        ["0[0]", "1[0]", "2[0]"],
+        ["0[1]", "1[1]", "2[1]"],
+        ["0[2]", "1[2]", "2[2]"],
+        ["0[0]", "1[1]", "2[2]"],
+        ["0[2]", "1[1]", "2[0]"]
+    ]
+
+        return winners;
+    }
 
     const playRound = (row, column) => {
         // Active player takes a turn
