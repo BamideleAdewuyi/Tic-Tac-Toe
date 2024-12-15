@@ -66,11 +66,13 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     const players = [
         {
             name: playerOneName,
-            token: 1
+            token: 1,
+            selections: []
         },
         {
             name: playerTwoName,
-            token: 2
+            token: 2,
+            selections: []
         }
     ];
 
