@@ -91,7 +91,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     };
 
     const gameOver = () => {
-        
+        var winners = new Array();
     }
 
     const playRound = (row, column) => {
