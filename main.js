@@ -31,6 +31,9 @@ function Gameboard() {
         if (isValid) {
             board[row][column].addToken(player)
         };
+        return {
+            isValid
+        }
     }
 
     // This method will be used to print our board to the console.
