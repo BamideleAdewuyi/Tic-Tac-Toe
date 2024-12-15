@@ -91,7 +91,15 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     };
 
     const gameOver = () => {
-        var winners = new Array();
+        var winners = [
+        [0[0], 0[1], 0[2]], 
+        [1[0], 1[1], 1[2]], 
+        [2[0], 2[1], 2[2]],
+        [0[0], 1[0], 2[0]],
+        [0[1], 1[1], 2[1]],
+        [0[2], 1[2], 2[2]],
+        [0[0], 1[1], 2[2]],
+        [0[2], 1[1], 2[0]]]
     }
 
     const playRound = (row, column) => {
