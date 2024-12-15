@@ -14,6 +14,21 @@ function Gameboard() {
         }
     }
 
+    const gameOver = () => {
+        var winners = [
+        ["0[0]", "0[1]", "0[2]"], 
+        ["1[0]", "1[1]", "1[2]"], 
+        ["2[0]", "2[1]", "2[2]"],
+        ["0[0]", "1[0]", "2[0]"],
+        ["0[1]", "1[1]", "2[1]"],
+        ["0[2]", "1[2]", "2[2]"],
+        ["0[0]", "1[1]", "2[2]"],
+        ["0[2]", "1[1]", "2[0]"]
+    ]
+
+        return winners;
+    }
+
     // This is how to render the board
     const getBoard = () => board;
 
@@ -24,6 +39,7 @@ function Gameboard() {
         // If the selected square is does not have a value of 0, it is taken so the move is invalid
         if (board[row][column].getValue() != 0) {
             isValid = false;
+            console.log("This square is taken!")
         };
 
         // Otherwise, the move is valid and square can have value changed to the player
@@ -96,21 +112,6 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         board.printBoard();
         console.log(`${getActivePlayer().name}'s turn.`);
     };
-
-    const gameOver = () => {
-        var winners = [
-        ["0[0]", "0[1]", "0[2]"], 
-        ["1[0]", "1[1]", "1[2]"], 
-        ["2[0]", "2[1]", "2[2]"],
-        ["0[0]", "1[0]", "2[0]"],
-        ["0[1]", "1[1]", "2[1]"],
-        ["0[2]", "1[2]", "2[2]"],
-        ["0[0]", "1[1]", "2[2]"],
-        ["0[2]", "1[1]", "2[0]"]
-    ]
-
-        return winners;
-    }
 
     const playRound = (row, column) => {
         // Active player takes a turn
