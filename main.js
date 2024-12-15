@@ -102,12 +102,16 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         [0[2], 1[2], 2[2]],
         [0[0], 1[1], 2[2]],
         [0[2], 1[1], 2[0]]]
+
+        return winners;
     }
 
     const playRound = (row, column) => {
         // Active player takes a turn
         board.takeTurn(row, column, getActivePlayer().token);
-        getActivePlayer().selections.push([row[column]])
+        getActivePlayer().selections.push(row);
+        console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
+        console.log(gameOver())
         // Check for winner
 
         // Switch player turn
