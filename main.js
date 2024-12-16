@@ -126,14 +126,22 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
             console.log(`winners: ${gameOver()}`)
             // Switch player turn
-            switchPlayerTurn();
+            // switchPlayerTurn();
         }
         else {
             console.log("That square is taken!")
         }
         // Check for winner
+        for (array of gameOver()) {
+            if (winChecker(getActivePlayer().selections, array)) {
+                console.log(`${getActivePlayer().name} wins!`)
+            }
+            else {
+                switchPlayerTurn();
+                printNewRound();
+            }
+        }
 
-        printNewRound();
     }
 
     // Initial play game message
