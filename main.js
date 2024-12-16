@@ -24,7 +24,6 @@ function Gameboard() {
         // If the selected square is does not have a value of 0, it is taken so the move is invalid
         if (board[row][column].getValue() != 0) {
             isValid = false;
-            console.log("This square is taken!")
         };
 
         // Otherwise, the move is valid and square can have value changed to the player
@@ -120,15 +119,18 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         // Active player takes a turn
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (turn.isValid) {
-            console.log("YESSS")
+            // console.log("YESSS")
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
             console.log(`winners: ${gameOver()}`)
+            // Switch player turn
+            switchPlayerTurn();
+        }
+        else {
+            console.log("That square is taken!")
         }
         // Check for winner
 
-        // Switch player turn
-        switchPlayerTurn();
         printNewRound();
     }
 
