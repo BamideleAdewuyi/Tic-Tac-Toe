@@ -120,7 +120,10 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     const playRound = (row, column) => {
         // Active player takes a turn
         let turn = board.takeTurn(row, column, getActivePlayer().token);
-        if (turn.isValid) {
+        if (!turn.isValid) {
+            console.log("That square is taken!")
+        }
+        else {
             // console.log("YESSS")
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
@@ -128,19 +131,15 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             // Switch player turn
             // switchPlayerTurn();
         }
-        else {
-            console.log("That square is taken!")
-        }
         // Check for winner
         for (array of gameOver()) {
             if (winChecker(getActivePlayer().selections, array)) {
                 console.log(`${getActivePlayer().name} wins!`)
-            }
-            else {
-                switchPlayerTurn();
-                printNewRound();
+                return;
             }
         }
+        switchPlayerTurn();
+        printNewRound();
 
     }
 
