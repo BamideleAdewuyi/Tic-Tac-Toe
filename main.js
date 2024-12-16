@@ -115,6 +115,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         return winners;
     }
 
+    const winChecker = (arr, target) => target.every(el => arr.includes(el));
+
     const playRound = (row, column) => {
         // Active player takes a turn
         let turn = board.takeTurn(row, column, getActivePlayer().token);
