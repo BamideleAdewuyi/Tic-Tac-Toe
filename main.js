@@ -122,6 +122,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (!turn.isValid) {
             console.log("That square is taken!")
+            printNewRound();
         }
         else {
             // console.log("YESSS")
@@ -130,16 +131,16 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             console.log(`winners: ${gameOver()}`)
             // Switch player turn
             // switchPlayerTurn();
-        }
-        // Check for winner
-        for (array of gameOver()) {
-            if (winChecker(getActivePlayer().selections, array)) {
-                console.log(`${getActivePlayer().name} wins!`)
-                return;
+            // Check for winner
+            for (array of gameOver()) {
+                if (winChecker(getActivePlayer().selections, array)) {
+                    console.log(`${getActivePlayer().name} wins!`)
+                    return;
+                }
             }
+            switchPlayerTurn();
+            printNewRound();
         }
-        switchPlayerTurn();
-        printNewRound();
 
     }
 
