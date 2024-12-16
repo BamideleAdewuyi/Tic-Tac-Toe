@@ -125,16 +125,15 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             printNewRound();
         }
         else {
-            // console.log("YESSS")
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
             console.log(`winners: ${gameOver()}`)
-            // Switch player turn
-            // switchPlayerTurn();
             // Check for winner
             for (array of gameOver()) {
                 if (winChecker(getActivePlayer().selections, array)) {
                     console.log(`${getActivePlayer().name} wins!`)
+                    players[0].selections = [];
+                    players[1].selections = [];
                     return;
                 }
             }
