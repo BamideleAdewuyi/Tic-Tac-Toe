@@ -119,6 +119,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const playRound = (row, column) => {
         // Active player takes a turn
+        let winner = false;
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (turn.isValid) {
             getActivePlayer().selections.push(`${row}[${column}]`);
@@ -130,7 +131,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
                     console.log(`${getActivePlayer().name} wins!`)
                     players[0].selections = [];
                     players[1].selections = [];
-                    const winner = getActivePlayer.name;
+                    winner = true;
                     return {
                         winner
                     };
@@ -167,6 +168,9 @@ function ScreenController () {
 
         // Display player's turn
         turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
+        if (game.playRound.winner) {
+            winnerDiv.textContent = `${game.getActivePlayer().name} wins!`;
+        }
 
         // Render board
         for (i = 0; i < board.length; i++) {
