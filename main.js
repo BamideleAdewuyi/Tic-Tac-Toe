@@ -148,7 +148,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     return {
         playRound,
-        getActivePlayer
+        getActivePlayer,
+        getBoard: board.getBoard
     }
 }
 
@@ -160,5 +161,8 @@ function ScreenController () {
     const updateScreen = () => {
         // Clear board
         boardDiv.textContent = "";
+
+        // Show updated board
+        const board = game.getBoard();
     }
 };
