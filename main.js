@@ -152,4 +152,6 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     }
 }
 
-const game = GameController();
+function ScreenController () {
+    const game = GameController();
+};
