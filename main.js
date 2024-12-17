@@ -130,7 +130,10 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
                     console.log(`${getActivePlayer().name} wins!`)
                     players[0].selections = [];
                     players[1].selections = [];
-                    return;
+                    const winner = getActivePlayer.name;
+                    return {
+                        winner
+                    };
                 }
             }
             switchPlayerTurn();
