@@ -179,20 +179,20 @@ function ScreenController () {
             })
         }
 
-        // Event handler for buttons
-        function boardClickHandler(e) {
-            const selectedRow = e.target.dataset.row;
-            const selectedColumn = e.target.dataset.column;
-            // Ensure player has not clicked on space between row or column
-            if (!selectedRow || !selectedColumn) return;
-            // Input the row and column to the playRound function
-            game.playRound(selectedRow, selectedColumn)
-            // Update the screen
-            updateScreen();
-        }
-
-        boardDiv.addEventListener("click", boardClickHandler);
     }
+    // Event handler for buttons
+    function boardClickHandler(e) {
+        const selectedRow = e.target.dataset.row;
+        const selectedColumn = e.target.dataset.column;
+        // Ensure player has not clicked on space between row or column
+        if (!selectedRow || !selectedColumn) return;
+        // Input the row and column to the playRound function
+        game.playRound(selectedRow, selectedColumn)
+        // Update the screen
+        updateScreen();
+    }
+
+    boardDiv.addEventListener("click", boardClickHandler);
     updateScreen();
 
 };
