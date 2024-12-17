@@ -134,7 +134,6 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
                 }
             }
             switchPlayerTurn();
-            // printNewRound();
         }
         else {
             console.log("That square is taken!")
@@ -152,7 +151,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
-    const turnDiv = document.querySelector(".turn")
+    const turnDiv = document.querySelector(".turn");
+    const infoMessage = document.querySelector(".infoMessage");
 
     const updateScreen = () => {
         // Clear board
