@@ -156,4 +156,8 @@ function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
     const turnDiv = document.querySelector(".turn")
+
+    const updateScreen = () => {
+        
+    }
 };
