@@ -95,11 +95,6 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const getActivePlayer = () => activePlayer;
 
-    const printNewRound = () => {
-        board.printBoard();
-        console.log(`${getActivePlayer().name}'s turn.`);
-    };
-
     const gameOver = () => {
         var winners = [
         ["0[0]", "0[1]", "0[2]"], 
