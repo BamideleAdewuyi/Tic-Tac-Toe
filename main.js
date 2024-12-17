@@ -154,4 +154,6 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
 function ScreenController () {
     const game = GameController();
+    const boardDiv = document.querySelector(".board");
+    const turnDiv = document.querySelector(".turn")
 };
