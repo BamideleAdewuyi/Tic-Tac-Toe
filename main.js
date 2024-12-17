@@ -168,5 +168,23 @@ function ScreenController () {
 
         // Display player's turn
         turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
+
+        // Render board
+        for (i = 0; i < board.length; i++) {
+            board[i].forEach((cell, index) => {
+                // Create a button for each cell
+                const cellButton = document.createElement("button");
+                cellButton.classList.add("cell");
+                // Create row and column attributes to pass into playRound
+                cellButton.dataset.row = i;
+                cellButton.dataset.column = index;
+                cellButton.textContent = cell.getValue();
+                boardDiv.appendChild(cellButton);
+            })
+        }
     }
+    updateScreen();
+
 };
+
+ScreenController();
