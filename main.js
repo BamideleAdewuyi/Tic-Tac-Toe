@@ -165,5 +165,8 @@ function ScreenController () {
         // Show updated board and get player turn
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
+
+        // Display player's turn
+        turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
     }
 };
