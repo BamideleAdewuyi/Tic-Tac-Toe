@@ -162,7 +162,8 @@ function ScreenController () {
         // Clear board
         boardDiv.textContent = "";
 
-        // Show updated board
+        // Show updated board and get player turn
         const board = game.getBoard();
+        const activePlayer = game.getActivePlayer();
     }
 };
