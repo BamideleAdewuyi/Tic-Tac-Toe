@@ -11,4 +11,10 @@
     width: 700px;
     height: 700px;
     display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    width: calc(700/3)px;
+    height: calc(700/3)px;
 }
