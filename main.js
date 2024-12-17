@@ -182,6 +182,11 @@ function ScreenController () {
                 boardDiv.appendChild(cellButton);
             })
         }
+
+        // Event handler for buttons
+        function boardClickHandler(e) {
+            
+        }
     }
     updateScreen();
 
