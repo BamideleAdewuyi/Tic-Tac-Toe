@@ -152,7 +152,7 @@ function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
     const turnDiv = document.querySelector(".turn");
-    const infoMessage = document.querySelector(".infoMessage");
+    const winnerDiv = document.querySelector(".winner");
 
     const updateScreen = () => {
         // Clear board
