@@ -158,6 +158,7 @@ function ScreenController () {
     const turnDiv = document.querySelector(".turn")
 
     const updateScreen = () => {
-        
+        // Clear board
+        boardDiv.textContent = "";
     }
 };
