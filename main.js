@@ -112,7 +112,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const winChecker = (playerSelections, winningCombo) => winningCombo.every(el => playerSelections.includes(el));
 
-    const gameOver = (state) => state;
+    const gameOver = false;
+
     const playRound = (row, column) => {
         // Active player takes a turn
         
