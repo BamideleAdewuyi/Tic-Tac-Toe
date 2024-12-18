@@ -128,6 +128,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
                     console.log(`${getActivePlayer().name} wins!`)
                     players[0].selections = [];
                     players[1].selections = [];
+                    gameOver = true;
                 }
             }
             switchPlayerTurn();
@@ -141,7 +142,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     return {
         playRound,
         getActivePlayer,
-        getBoard: board.getBoard
+        getBoard: board.getBoard,
+        gameOver
     }
 }
 
