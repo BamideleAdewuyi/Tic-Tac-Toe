@@ -95,7 +95,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const getActivePlayer = () => activePlayer;
 
-    const gameOver = () => {
+    const win = () => {
         var winners = [
         ["0[0]", "0[1]", "0[2]"], 
         ["1[0]", "1[1]", "1[2]"], 
@@ -114,22 +114,18 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const playRound = (row, column) => {
         // Active player takes a turn
-        let winner = false;
+        
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (turn.isValid) {
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
-            console.log(`winners: ${gameOver()}`)
+            console.log(`winners: ${win()}`)
             // Check for winner
-            for (array of gameOver()) {
+            for (array of win()) {
                 if (winChecker(getActivePlayer().selections, array)) {
                     console.log(`${getActivePlayer().name} wins!`)
                     players[0].selections = [];
                     players[1].selections = [];
-                    winner = true;
-                    return {
-                        winner
-                    };
                 }
             }
             switchPlayerTurn();
@@ -163,10 +159,7 @@ function ScreenController () {
 
         // Display player's turn
         turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
-        if (game.playRound.winner) {
-            winnerDiv.textContent = `${game.getActivePlayer().name} wins!`;
-        }
-
+        
         // Render board
         for (i = 0; i < board.length; i++) {
             board[i].forEach((cell, index) => {
