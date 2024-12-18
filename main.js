@@ -112,7 +112,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const winChecker = (playerSelections, winningCombo) => winningCombo.every(el => playerSelections.includes(el));
 
-    const gameOver = false;
+    let gameOver = false;
 
     const playRound = (row, column) => {
         // Active player takes a turn
@@ -122,13 +122,13 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
             console.log(`winners: ${win()}`)
+            console.log(`gameOver true or false? ${gameOver}`)
             // Check for winner
             for (array of win()) {
                 if (winChecker(getActivePlayer().selections, array)) {
                     console.log(`${getActivePlayer().name} wins!`)
                     players[0].selections = [];
                     players[1].selections = [];
-                    gameOver = true;
                 }
             }
             switchPlayerTurn();
@@ -136,14 +136,14 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         else {
             console.log("That square is taken!")
         }
-
     }
 
     return {
         playRound,
         getActivePlayer,
         getBoard: board.getBoard,
-        gameOver
+        winChecker,
+        win
     }
 }
 
@@ -157,25 +157,31 @@ function ScreenController () {
         // Clear board
         boardDiv.textContent = "";
 
-        // Show updated board and get player turn
-        const board = game.getBoard();
-        const activePlayer = game.getActivePlayer();
-
-        // Display player's turn
-        turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
-        
-        // Render board
-        for (i = 0; i < board.length; i++) {
-            board[i].forEach((cell, index) => {
-                // Create a button for each cell
-                const cellButton = document.createElement("button");
-                cellButton.classList.add("cell");
-                // Create row and column attributes to pass into playRound
-                cellButton.dataset.row = i;
-                cellButton.dataset.column = index;
-                cellButton.textContent = cell.getValue();
-                boardDiv.appendChild(cellButton);
-            })
+        // If there is a winner
+        if (game.gameOver) {
+            winnerDiv.textContent = `${game.getActivePlayer().name} wins!`;
+        }
+        else {
+            // Show updated board and get player turn
+            const board = game.getBoard();
+            const activePlayer = game.getActivePlayer();
+    
+            // Display player's turn
+            turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
+            
+            // Render board
+            for (i = 0; i < board.length; i++) {
+                board[i].forEach((cell, index) => {
+                    // Create a button for each cell
+                    const cellButton = document.createElement("button");
+                    cellButton.classList.add("cell");
+                    // Create row and column attributes to pass into playRound
+                    cellButton.dataset.row = i;
+                    cellButton.dataset.column = index;
+                    cellButton.textContent = cell.getValue();
+                    boardDiv.appendChild(cellButton);
+                })
+            }
         }
 
     }
