@@ -112,9 +112,11 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const winChecker = (playerSelections, winningCombo) => winningCombo.every(el => playerSelections.includes(el));
 
-    const gameOver = (state) => {
-        if (state) {
-            `${getActivePlayer()} wins!`;
+    const gameOver = () => {
+        for (array of win()) {
+            if (winChecker(getActivePlayer().selections, array)) {
+                return true;
+            }
         }
     }
 
@@ -125,13 +127,11 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`FROM PLAYROUND ${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
             // Check for winner
-            for (array of win()) {
-                if (winChecker(getActivePlayer().selections, array)) {
-                    console.log(`FROM PLAYROUND: ${getActivePlayer().name} wins!`)
-                    // players[0].selections = [];
-                    // players[1].selections = [];
-                    gameOver(true);
-                }
+            if (gameOver()) {
+                console.log(`FROM gameOver: ${getActivePlayer().name} wins!`)
+            }
+            else {
+                switchPlayerTurn()
             }
         }
         else {
@@ -145,7 +145,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         getBoard: board.getBoard,
         winChecker,
         win,
-        switchPlayerTurn
+        switchPlayerTurn,
+        gameOver
     }
 }
 
@@ -153,7 +154,7 @@ function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
     const turnDiv = document.querySelector(".turn");
-    const winnerDiv = document.querySelector(".winner");
+    const resultDiv = document.querySelector(".winner");
 
     const updateScreen = () => {
         // Clear board
@@ -163,9 +164,13 @@ function ScreenController () {
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
 
+        // Check for winner
+        if (game.gameOver()){
+            resultDiv.textContent = `${activePlayer.name} wins!`
+        }
+
         // Display player's turn
         turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
-        
         // Render board
         for (i = 0; i < board.length; i++) {
             board[i].forEach((cell, index) => {
@@ -179,8 +184,6 @@ function ScreenController () {
                 boardDiv.appendChild(cellButton);
             })
         }
-        console.log(`Here are ${activePlayer.name}'s selections: ${activePlayer.selections}`)
-        console.log(`Here are the winning combos: ${game.win()}`)
         return {
             activePlayer
         }        
@@ -197,14 +200,10 @@ function ScreenController () {
         game.playRound(selectedRow, selectedColumn)
         for (array of game.win()) {
             if (game.winChecker(game.getActivePlayer().selections, array)) {
-                console.log("winChecker works!!!")
-                winnerDiv.textContent = `${game.getActivePlayer().name} wins!`
-            }
-            else {
-                console.log(`Still waiting`)
+                resultDiv.textContent = `${game.getActivePlayer().name} wins!`
             }
         }
-        game.switchPlayerTurn();
+        // game.switchPlayerTurn();
         // Update the screen
         updateScreen();
     }
