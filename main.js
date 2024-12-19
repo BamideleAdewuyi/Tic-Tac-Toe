@@ -74,12 +74,12 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     const players = [
         {
             name: playerOneName,
-            token: 1,
+            token: "O",
             selections: []
         },
         {
             name: playerTwoName,
-            token: 2,
+            token: "X",
             selections: []
         }
     ];
@@ -120,13 +120,10 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const playRound = (row, column) => {
         // Active player takes a turn
-        
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (turn.isValid) {
             getActivePlayer().selections.push(`${row}[${column}]`);
             console.log(`FROM PLAYROUND ${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
-            // console.log(`winners: ${win()}`)
-            // console.log(`gameOver true or false? ${gameOver}`)
             // Check for winner
             for (array of win()) {
                 if (winChecker(getActivePlayer().selections, array)) {
@@ -136,7 +133,6 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
                     gameOver(true);
                 }
             }
-            // switchPlayerTurn();
         }
         else {
             console.log("That square is taken!")
@@ -170,9 +166,6 @@ function ScreenController () {
         // Display player's turn
         turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
         
-        // console.log(`FROM updateScreen: ${game.getActivePlayer().token}'s selections: ${game.getActivePlayer().selections}`);
-        // console.log(`FROM updateScreen: Winning combos: ${game.win()}`)
-        // console.log(`FROM updateScreen: winChecker result: ${game.winChecker(game.getActivePlayer().selections, game.win())}`)
         // Render board
         for (i = 0; i < board.length; i++) {
             board[i].forEach((cell, index) => {
@@ -190,28 +183,7 @@ function ScreenController () {
         console.log(`Here are the winning combos: ${game.win()}`)
         return {
             activePlayer
-        }
-        // for (array of game.win()) {
-        //     if (game.winChecker(activePlayer.selections, array)) {
-        //         console.log("winChecker works!!!")
-        //     }
-        //     else {
-        //         console.log(`Still waiting`)
-        //     }
-        // }
-        // console.log(game.winChecker(["0[0]", "0[1]", "0[2]"],[
-        //     ["0[0]", "0[1]", "0[2]"], 
-        //     ["1[0]", "1[1]", "1[2]"], 
-        //     ["2[0]", "2[1]", "2[2]"],
-        //     ["0[0]", "1[0]", "2[0]"],
-        //     ["0[1]", "1[1]", "2[1]"],
-        //     ["0[2]", "1[2]", "2[2]"],
-        //     ["0[0]", "1[1]", "2[2]"],
-        //     ["0[2]", "1[1]", "2[0]"]
-        // ]))
-        // console.log(`boardClickHandler ${game.winChecker(activePlayer.selections, game.win())}`)
-        // console.log(`boardClickHandler ${game.winChecker(["0[0]", "0[1]", "0[2]"], game.win())}`)
-        
+        }        
 
     }
     // Event handler for buttons
