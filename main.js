@@ -112,7 +112,11 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const winChecker = (playerSelections, winningCombo) => winningCombo.every(el => playerSelections.includes(el));
 
-    let gameOver = false;
+    const gameOver = (state) => {
+        if (state) {
+            `${getActivePlayer()} wins!`;
+        }
+    }
 
     const playRound = (row, column) => {
         // Active player takes a turn
@@ -120,18 +124,19 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (turn.isValid) {
             getActivePlayer().selections.push(`${row}[${column}]`);
-            console.log(`${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
-            console.log(`winners: ${win()}`)
-            console.log(`gameOver true or false? ${gameOver}`)
+            console.log(`FROM PLAYROUND ${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
+            // console.log(`winners: ${win()}`)
+            // console.log(`gameOver true or false? ${gameOver}`)
             // Check for winner
             for (array of win()) {
                 if (winChecker(getActivePlayer().selections, array)) {
-                    console.log(`${getActivePlayer().name} wins!`)
-                    players[0].selections = [];
-                    players[1].selections = [];
+                    console.log(`FROM PLAYROUND: ${getActivePlayer().name} wins!`)
+                    // players[0].selections = [];
+                    // players[1].selections = [];
+                    gameOver(true);
                 }
             }
-            switchPlayerTurn();
+            // switchPlayerTurn();
         }
         else {
             console.log("That square is taken!")
@@ -143,7 +148,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         getActivePlayer,
         getBoard: board.getBoard,
         winChecker,
-        win
+        win,
+        switchPlayerTurn
     }
 }
 
@@ -156,43 +162,77 @@ function ScreenController () {
     const updateScreen = () => {
         // Clear board
         boardDiv.textContent = "";
+        
+        // Show updated board and get player turn
+        const board = game.getBoard();
+        const activePlayer = game.getActivePlayer();
 
-        // If there is a winner
-        if (game.gameOver) {
-            winnerDiv.textContent = `${game.getActivePlayer().name} wins!`;
+        // Display player's turn
+        turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
+        
+        // console.log(`FROM updateScreen: ${game.getActivePlayer().token}'s selections: ${game.getActivePlayer().selections}`);
+        // console.log(`FROM updateScreen: Winning combos: ${game.win()}`)
+        // console.log(`FROM updateScreen: winChecker result: ${game.winChecker(game.getActivePlayer().selections, game.win())}`)
+        // Render board
+        for (i = 0; i < board.length; i++) {
+            board[i].forEach((cell, index) => {
+                // Create a button for each cell
+                const cellButton = document.createElement("button");
+                cellButton.classList.add("cell");
+                // Create row and column attributes to pass into playRound
+                cellButton.dataset.row = i;
+                cellButton.dataset.column = index;
+                cellButton.textContent = cell.getValue();
+                boardDiv.appendChild(cellButton);
+            })
         }
-        else {
-            // Show updated board and get player turn
-            const board = game.getBoard();
-            const activePlayer = game.getActivePlayer();
-    
-            // Display player's turn
-            turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
-            
-            // Render board
-            for (i = 0; i < board.length; i++) {
-                board[i].forEach((cell, index) => {
-                    // Create a button for each cell
-                    const cellButton = document.createElement("button");
-                    cellButton.classList.add("cell");
-                    // Create row and column attributes to pass into playRound
-                    cellButton.dataset.row = i;
-                    cellButton.dataset.column = index;
-                    cellButton.textContent = cell.getValue();
-                    boardDiv.appendChild(cellButton);
-                })
-            }
+        console.log(`Here are ${activePlayer.name}'s selections: ${activePlayer.selections}`)
+        console.log(`Here are the winning combos: ${game.win()}`)
+        return {
+            activePlayer
         }
+        // for (array of game.win()) {
+        //     if (game.winChecker(activePlayer.selections, array)) {
+        //         console.log("winChecker works!!!")
+        //     }
+        //     else {
+        //         console.log(`Still waiting`)
+        //     }
+        // }
+        // console.log(game.winChecker(["0[0]", "0[1]", "0[2]"],[
+        //     ["0[0]", "0[1]", "0[2]"], 
+        //     ["1[0]", "1[1]", "1[2]"], 
+        //     ["2[0]", "2[1]", "2[2]"],
+        //     ["0[0]", "1[0]", "2[0]"],
+        //     ["0[1]", "1[1]", "2[1]"],
+        //     ["0[2]", "1[2]", "2[2]"],
+        //     ["0[0]", "1[1]", "2[2]"],
+        //     ["0[2]", "1[1]", "2[0]"]
+        // ]))
+        // console.log(`boardClickHandler ${game.winChecker(activePlayer.selections, game.win())}`)
+        // console.log(`boardClickHandler ${game.winChecker(["0[0]", "0[1]", "0[2]"], game.win())}`)
+        
 
     }
     // Event handler for buttons
     function boardClickHandler(e) {
         const selectedRow = e.target.dataset.row;
         const selectedColumn = e.target.dataset.column;
+        // const winner = game.getActivePlayer();
         // Ensure player has not clicked on space between row or column
         if (!selectedRow || !selectedColumn) return;
         // Input the row and column to the playRound function
         game.playRound(selectedRow, selectedColumn)
+        for (array of game.win()) {
+            if (game.winChecker(game.getActivePlayer().selections, array)) {
+                console.log("winChecker works!!!")
+                winnerDiv.textContent = `${game.getActivePlayer().name} wins!`
+            }
+            else {
+                console.log(`Still waiting`)
+            }
+        }
+        game.switchPlayerTurn();
         // Update the screen
         updateScreen();
     }
