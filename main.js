@@ -50,7 +50,7 @@ function Gameboard() {
 // Each cell is a square on grid, their default value is 0, for untaken.
 // Their value can be changed to either 1 or 2, depending on which player has taken the square.
 function Cell() {
-    let value = 0;
+    let value = "";
 
     // Accept a player's token to change the value of the cell
     const addToken = (player) => {
@@ -190,7 +190,7 @@ function ScreenController () {
     function boardClickHandler(e) {
         const selectedRow = e.target.dataset.row;
         const selectedColumn = e.target.dataset.column;
-        // const winner = game.getActivePlayer();
+
         // Ensure player has not clicked on space between row or column
         if (!selectedRow || !selectedColumn) return;
         // Input the row and column to the playRound function
