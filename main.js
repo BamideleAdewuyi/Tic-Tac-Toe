@@ -125,10 +125,9 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         let turn = board.takeTurn(row, column, getActivePlayer().token);
         if (turn.isValid) {
             getActivePlayer().selections.push(`${row}[${column}]`);
-            console.log(`FROM PLAYROUND ${getActivePlayer().token}'s selections: ${getActivePlayer().selections}`);
             // Check for winner
             if (gameOver()) {
-                console.log(`FROM gameOver: ${getActivePlayer().name} wins!`)
+                return;
             }
             else {
                 switchPlayerTurn()
