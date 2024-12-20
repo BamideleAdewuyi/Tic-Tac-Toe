@@ -179,6 +179,9 @@ function ScreenController () {
         if (game.weHaveAWinner()){
             resultDiv.textContent = `${activePlayer.name} wins!`
         }
+        if (game.itsADraw()) {
+            resultDiv.textContent = `It's a draw!`;
+        }
 
         // Display player's turn
         turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
@@ -209,14 +212,6 @@ function ScreenController () {
         if (!selectedRow || !selectedColumn) return;
         // Input the row and column to the playRound function
         game.playRound(selectedRow, selectedColumn)
-        for (array of game.win()) {
-            if (game.winChecker(game.getActivePlayer().selections, array)) {
-                resultDiv.textContent = `${game.getActivePlayer().name} wins!`
-            }
-            if (game.itsADraw()) {
-                resultDiv.textContent = `It's a draw!`;
-            }
-        }
         // Update the screen
         updateScreen();
     }
