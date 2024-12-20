@@ -112,7 +112,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 
     const winChecker = (playerSelections, winningCombo) => winningCombo.every(el => playerSelections.includes(el));
 
-    const gameOver = () => {
+    const weHaveAWinner = () => {
         for (array of win()) {
             if (winChecker(getActivePlayer().selections, array)) {
                 return true;
@@ -126,7 +126,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         if (turn.isValid) {
             getActivePlayer().selections.push(`${row}[${column}]`);
             // Check for winner
-            if (gameOver()) {
+            if (weHaveAWinner()) {
                 return;
             }
             else {
@@ -145,7 +145,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         winChecker,
         win,
         switchPlayerTurn,
-        gameOver
+        weHaveAWinner
     }
 }
 
@@ -164,7 +164,7 @@ function ScreenController () {
         const activePlayer = game.getActivePlayer();
 
         // Check for winner
-        if (game.gameOver()){
+        if (game.weHaveAWinner()){
             resultDiv.textContent = `${activePlayer.name} wins!`
         }
 
