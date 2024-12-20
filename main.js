@@ -182,7 +182,7 @@ function ScreenController () {
             })
         }
     }
-    
+
     const updateScreen = () => {
         // Clear board
         boardDiv.textContent = "";
@@ -194,6 +194,7 @@ function ScreenController () {
         // Check for winner
         if (game.weHaveAWinner()){
             resultDiv.textContent = `${activePlayer.name} wins!`
+            render();
             return;
         }
         if (game.itsADraw()) {
@@ -230,6 +231,10 @@ ScreenController();
 
 // function to start a new game when page is opened
 function StartGame() {
+    const container = document.querySelector(".container")
     const startGameButton = document.createElement("button");
-    
+    startGameButton.textContent = "Start Game"
+    container.appendChild(startGameButton);
 }
+
+StartGame()
