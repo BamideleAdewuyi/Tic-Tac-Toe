@@ -223,6 +223,8 @@ function ScreenController () {
 
 ScreenController();
 
+// function to start a new game when page is opened
 function StartGame() {
-
+    const startGameButton = document.createElement("button");
+    
 }
