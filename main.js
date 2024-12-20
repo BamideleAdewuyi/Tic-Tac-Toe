@@ -121,10 +121,14 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
     }
 
     const itsADraw = () => {
-        // board.printBoard()
-        // console.log(board.getBoard().map((row) => row.map((cell) => cell.getValue())))
+        const isTaken = (currentValue) => currentValue != "";
         boardValues = board.getBoard().map((row) => row.map((cell) => cell.getValue()));
-        console.log(boardValues)
+        if (boardValues[0].every(isTaken) && boardValues[1].every(isTaken) && boardValues[2].every(isTaken)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     const playRound = (row, column) => {
@@ -136,14 +140,13 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
             if (weHaveAWinner()) {
                 return;
             }
+            else if (itsADraw()) {
+                return;
+            }
             else {
                 switchPlayerTurn()
             }
         }
-        else {
-            console.log("That square is taken!")
-        }
-        itsADraw();
     }
 
     return {
@@ -153,7 +156,8 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         winChecker,
         win,
         switchPlayerTurn,
-        weHaveAWinner
+        weHaveAWinner,
+        itsADraw
     }
 }
 
@@ -209,8 +213,10 @@ function ScreenController () {
             if (game.winChecker(game.getActivePlayer().selections, array)) {
                 resultDiv.textContent = `${game.getActivePlayer().name} wins!`
             }
+            if (game.itsADraw()) {
+                resultDiv.textContent = `It's a draw!`;
+            }
         }
-        // game.switchPlayerTurn();
         // Update the screen
         updateScreen();
     }
