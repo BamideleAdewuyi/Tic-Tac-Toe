@@ -165,7 +165,7 @@ function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
     const turnDiv = document.querySelector(".turn");
-    const resultDiv = document.querySelector(".winner");
+    const resultDiv = document.querySelector(".result");
 
     const updateScreen = () => {
         // Clear board
@@ -222,3 +222,7 @@ function ScreenController () {
 };
 
 ScreenController();
+
+function StartGame() {
+
+}
