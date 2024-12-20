@@ -120,6 +120,13 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         }
     }
 
+    const itsADraw = () => {
+        // board.printBoard()
+        // console.log(board.getBoard().map((row) => row.map((cell) => cell.getValue())))
+        boardValues = board.getBoard().map((row) => row.map((cell) => cell.getValue()));
+        console.log(boardValues)
+    }
+
     const playRound = (row, column) => {
         // Active player takes a turn
         let turn = board.takeTurn(row, column, getActivePlayer().token);
@@ -136,6 +143,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
         else {
             console.log("That square is taken!")
         }
+        itsADraw();
     }
 
     return {
