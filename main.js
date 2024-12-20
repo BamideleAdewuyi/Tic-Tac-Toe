@@ -178,6 +178,7 @@ function ScreenController () {
         // Check for winner
         if (game.weHaveAWinner()){
             resultDiv.textContent = `${activePlayer.name} wins!`
+            return;
         }
         if (game.itsADraw()) {
             resultDiv.textContent = `It's a draw!`;
