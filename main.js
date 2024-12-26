@@ -195,10 +195,12 @@ function ScreenController () {
         if (game.weHaveAWinner()){
             resultDiv.textContent = `${activePlayer.name} wins!`
             render();
+            boardDiv.removeEventListener("click", boardClickHandler);
             return;
         }
         if (game.itsADraw()) {
             resultDiv.textContent = `It's a draw!`;
+            boardDiv.removeEventListener("click", boardClickHandler);
         }
 
         // Display player's turn
