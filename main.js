@@ -164,7 +164,7 @@ function GameController(playerOneName = "Player 1", playerTwoName = "Player 2") 
 function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
-    const turnDiv = document.querySelector(".turn");
+    const gameStateDiv = document.querySelector(".turn");
 
     const render = () => {
         // Render board
@@ -192,18 +192,18 @@ function ScreenController () {
 
         // Check for winner
         if (game.weHaveAWinner()){
-            turnDiv.textContent = `${activePlayer.name} wins!`
+            gameStateDiv.textContent = `${activePlayer.name} wins!`
             render();
             boardDiv.removeEventListener("click", boardClickHandler);
             return;
         }
         if (game.itsADraw()) {
-            turnDiv.textContent = `It's a draw!`;
+            gameStateDiv.textContent = `It's a draw!`;
             boardDiv.removeEventListener("click", boardClickHandler);
         }
 
         // Display player's turn
-        turnDiv.textContent = `It's ${activePlayer.name}'s turn...`
+        gameStateDiv.textContent = `It's ${activePlayer.name}'s turn...`
         render();
         return {
             activePlayer
@@ -229,7 +229,7 @@ function ScreenController () {
 };
 
 // function to start a new game when page is opened
-function StartGame() {
+function NewGame() {
     const container = document.querySelector(".container")
     const startGameButton = document.createElement("button");
     startGameButton.textContent = "Start Game"
@@ -239,4 +239,4 @@ function StartGame() {
     })
 }
 
-StartGame()
+NewGame()
