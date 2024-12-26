@@ -231,10 +231,10 @@ function ScreenController () {
 // function to start a new game when page is opened
 function NewGame() {
     const container = document.querySelector(".container")
-    const startGameButton = document.createElement("button");
-    startGameButton.textContent = "Start Game"
-    container.appendChild(startGameButton);
-    startGameButton.addEventListener("click", () => {
+    const NewGameButton = document.createElement("button");
+    NewGameButton.textContent = "New Game"
+    container.appendChild(NewGameButton);
+    NewGameButton.addEventListener("click", () => {
         ScreenController();
     })
 }
