@@ -165,7 +165,6 @@ function ScreenController () {
     const game = GameController();
     const boardDiv = document.querySelector(".board");
     const turnDiv = document.querySelector(".turn");
-    const resultDiv = document.querySelector(".result");
 
     const render = () => {
         // Render board
@@ -193,13 +192,13 @@ function ScreenController () {
 
         // Check for winner
         if (game.weHaveAWinner()){
-            resultDiv.textContent = `${activePlayer.name} wins!`
+            turnDiv.textContent = `${activePlayer.name} wins!`
             render();
             boardDiv.removeEventListener("click", boardClickHandler);
             return;
         }
         if (game.itsADraw()) {
-            resultDiv.textContent = `It's a draw!`;
+            turnDiv.textContent = `It's a draw!`;
             boardDiv.removeEventListener("click", boardClickHandler);
         }
 
@@ -236,7 +235,7 @@ function StartGame() {
     startGameButton.textContent = "Start Game"
     container.appendChild(startGameButton);
     startGameButton.addEventListener("click", () => {
-        ScreenController()
+        ScreenController();
     })
 }
 
