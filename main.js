@@ -200,6 +200,7 @@ function ScreenController(playerOneName = "Player 1", playerTwoName = "Player 2"
         if (game.itsADraw()) {
             gameStateDiv.textContent = `It's a draw!`;
             boardDiv.removeEventListener("click", boardClickHandler);
+            return;
         }
 
         // Display player's turn
