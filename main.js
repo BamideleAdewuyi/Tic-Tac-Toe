@@ -199,6 +199,7 @@ function ScreenController(playerOneName = "Player 1", playerTwoName = "Player 2"
         }
         if (game.itsADraw()) {
             gameStateDiv.textContent = `It's a draw!`;
+            render();
             boardDiv.removeEventListener("click", boardClickHandler);
             return;
         }
