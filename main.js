@@ -235,8 +235,12 @@ function NewGame() {
     newGameButton.textContent = "New Game"
     container.appendChild(newGameButton);
     newGameButton.addEventListener("click", () => {
-        let playerOneName = prompt("Player 1, enter your name. You will play as O's");
-        let playerTwoName = prompt("Player 2, enter your name. You will play as X's")
+        while (!playerOneName) {
+            var playerOneName = prompt("Player 1, enter your name. You will play as O's");
+        }
+        while (!playerTwoName) {
+            var playerTwoName = prompt("Player 2, enter your name. You will play as X's")
+        }
         ScreenController(playerOneName, playerTwoName);
     })
 }
