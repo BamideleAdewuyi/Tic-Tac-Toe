@@ -237,7 +237,7 @@ function NewGame() {
     newGameButton.addEventListener("click", () => {
         ScreenController();
         let player1Name = prompt("Player 1, enter your name. You will play as O's");
-        let player2Name = prompt("Player 2, enter your name. You will play as O's")
+        let player2Name = prompt("Player 2, enter your name. You will play as X's")
     })
 }
 
