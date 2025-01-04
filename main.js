@@ -247,6 +247,9 @@ function NewGame() {
         // }
         // ScreenController(playerOneName, playerTwoName);
         dialog.showModal();
+        closeButton.addEventListener("click", () => {
+            dialog.close();
+        })
     })
 }
 
