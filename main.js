@@ -165,6 +165,7 @@ function ScreenController(playerOneName = "Player 1", playerTwoName = "Player 2"
     const game = GameController(playerOneName, playerTwoName);
     const boardDiv = document.querySelector(".board");
     const gameStateDiv = document.querySelector(".turn");
+    const dialog = document.querySelector("dialog");
 
     const render = () => {
         // Render board
