@@ -245,6 +245,7 @@ function NewGame() {
         //     var playerTwoName = prompt("Player 2, enter your name. You will play as X's")
         // }
         // ScreenController(playerOneName, playerTwoName);
+        dialog.showModal();
     })
 }
 
