@@ -248,15 +248,15 @@ function NewGame() {
         // }
         // ScreenController(playerOneName, playerTwoName);
         dialog.showModal();
-        newGameForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            ScreenController(document.getElementById("playerOne").value, document.getElementById("playerTwo").value);
-            newGameForm.reset();
-            dialog.close();
-        })
-        closeButton.addEventListener("click", () => {
-            dialog.close();
-        })
+    })
+    newGameForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        ScreenController(document.getElementById("playerOne").value, document.getElementById("playerTwo").value);
+        newGameForm.reset();
+        dialog.close();
+    })
+    closeButton.addEventListener("click", () => {
+        dialog.close();
     })
 }
 
