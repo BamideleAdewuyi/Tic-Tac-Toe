@@ -240,13 +240,6 @@ function NewGame() {
     newGameButton.textContent = "New Game"
     container.appendChild(newGameButton);
     newGameButton.addEventListener("click", () => {
-        // while (!playerOneName) {
-        //     var playerOneName = prompt("Player 1, enter your name. You will play as O's");
-        // }
-        // while (!playerTwoName) {
-        //     var playerTwoName = prompt("Player 2, enter your name. You will play as X's")
-        // }
-        // ScreenController(playerOneName, playerTwoName);
         dialog.showModal();
     })
     newGameForm.addEventListener("submit", (e) => {
