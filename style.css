@@ -7,6 +7,10 @@
     background-color: rgb(255,255,255);
 }
 
+.board, .cell {
+    background-color: rgb(255,205,85);
+}
+
 .board {
     outline: 2px solid black;
     width: 700px;
