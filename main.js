@@ -165,7 +165,6 @@ function ScreenController(playerOneName = "Player 1", playerTwoName = "Player 2"
     const game = GameController(playerOneName, playerTwoName);
     const boardDiv = document.querySelector(".board");
     const gameStateDiv = document.querySelector(".turn");
-    const dialog = document.querySelector("dialog");
 
     const render = () => {
         // Render board
@@ -235,16 +234,17 @@ function ScreenController(playerOneName = "Player 1", playerTwoName = "Player 2"
 function NewGame() {
     const container = document.querySelector(".container")
     const newGameButton = document.createElement("button");
+    const dialog = document.querySelector("dialog");
     newGameButton.textContent = "New Game"
     container.appendChild(newGameButton);
     newGameButton.addEventListener("click", () => {
-        while (!playerOneName) {
-            var playerOneName = prompt("Player 1, enter your name. You will play as O's");
-        }
-        while (!playerTwoName) {
-            var playerTwoName = prompt("Player 2, enter your name. You will play as X's")
-        }
-        ScreenController(playerOneName, playerTwoName);
+        // while (!playerOneName) {
+        //     var playerOneName = prompt("Player 1, enter your name. You will play as O's");
+        // }
+        // while (!playerTwoName) {
+        //     var playerTwoName = prompt("Player 2, enter your name. You will play as X's")
+        // }
+        // ScreenController(playerOneName, playerTwoName);
     })
 }
 
