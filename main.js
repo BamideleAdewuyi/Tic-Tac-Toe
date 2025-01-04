@@ -236,6 +236,7 @@ function NewGame() {
     const newGameButton = document.createElement("button");
     const dialog = document.querySelector("dialog");
     const closeButton = document.querySelector(".closeButton");
+    const newGameForm = document.querySelector(".newGameForm")
     newGameButton.textContent = "New Game"
     container.appendChild(newGameButton);
     newGameButton.addEventListener("click", () => {
@@ -247,6 +248,7 @@ function NewGame() {
         // }
         // ScreenController(playerOneName, playerTwoName);
         dialog.showModal();
+
         closeButton.addEventListener("click", () => {
             dialog.close();
         })
