@@ -235,6 +235,7 @@ function NewGame() {
     const container = document.querySelector(".container")
     const newGameButton = document.createElement("button");
     const dialog = document.querySelector("dialog");
+    const closeButton = document.querySelector(".closeButton");
     newGameButton.textContent = "New Game"
     container.appendChild(newGameButton);
     newGameButton.addEventListener("click", () => {
