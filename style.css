@@ -24,3 +24,7 @@
     font-size: 10em;
     color: rgb(69, 12, 134);
 }
+
+.newGameButton {
+    background-color: black;
+}
