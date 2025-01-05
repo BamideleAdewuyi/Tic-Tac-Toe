@@ -234,6 +234,7 @@ function ScreenController(playerOneName = "Player 1", playerTwoName = "Player 2"
 function NewGame() {
     const container = document.querySelector(".container")
     const newGameButton = document.createElement("button");
+    newGameButton.classList.add("newGameButton");
     const dialog = document.querySelector("dialog");
     const closeButton = document.querySelector(".closeButton");
     const newGameForm = document.querySelector(".newGameForm")
