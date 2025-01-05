@@ -4,6 +4,9 @@
          url('futur.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 } 
 
+* {
+    font-family: futura;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -36,5 +39,4 @@
     color: white;
     border-radius: 1em;
     padding: 1em;
-    font-family: futura;
 }
