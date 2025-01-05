@@ -28,4 +28,5 @@
 .newGameButton {
     background-color: black;
     color: white;
+    border-radius: 1em;
 }
